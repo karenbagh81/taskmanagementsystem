@@ -24,7 +24,7 @@
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.email}"></td>
-                <td><a th:href="@{users/user-update/{id}(id=${user.id})}">Edit</a></td>
+                <td><a th:href="@{users/user-update/{id}(id=${user.id})}">Update</a></td>
                 <td><a th:href="@{users/user-delete/{id}(id=${user.id})}">Delete</a></td>
             </tr>
             </tbody>
@@ -32,5 +32,8 @@
     </div>
     <p><a href="/users/user-create">Create user</a></p>
 </div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

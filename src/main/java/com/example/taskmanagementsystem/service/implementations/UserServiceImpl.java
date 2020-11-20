@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     private final UserRepository userRepository;
 
     @Autowired
@@ -22,11 +24,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(int id) throws NotFoundException {
-        User user = userRepository.getOne(id);
-        if (user == null) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
             throw new NotFoundException("User not found");
         }
-        return userRepository.getOne(id);
+        return user.get();
     }
 
     @Override

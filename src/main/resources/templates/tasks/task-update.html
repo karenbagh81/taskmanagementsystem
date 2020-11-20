@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Task</title>
+<meta charset="UTF-8">
+<title>Update task</title>
 </head>
 <body>
-<form action="#" th:action="@{/tasks/task-create}" th:object="${task}" method="post">
+<form action="#" th:action="@{/tasks/task-update}" th:object="${task}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
     <label for="taskName">Task Name</label>
     <input type="text" th:field="*{taskName}" id="taskName" placeholder="Task Name">
+    <br/>
     <label for="taskStatus">Task Status</label>
     <input type="text" th:field="*{taskStatus}" id="taskStatus" placeholder="Task Status">
+    <br/>
     <label for="description">Description</label>
     <input type="text" th:field="*{description}" id="description" placeholder="Description">
-    <label for="user">User</label>
-    <input list="users" th:field="*{user}" id="user" placeholder="Users">
-    <datalist id="users" >
-        <option th:each="user : ${users}">
-            <td th:text="${user.getEmail()}"></td>
-    </datalist>
-    <input type="submit" value="Create Task">
-
+    <br/>
+    <input type="submit" value="Update Task">
 </form>
 </body>
 </html>

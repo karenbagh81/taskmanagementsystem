@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
 @RequestMapping("/users")
+@RolesAllowed(value = "MANAGER")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -28,6 +30,7 @@ public class UserController {
 
     @GetMapping("/user-create")
     public String createUserForm(User user){
+
         return "users/user-create";
     }
 
