@@ -1,30 +1,23 @@
 package com.example.taskmanagementsystem.enums;
 
 public enum TaskStatus {
-    NEWTASK(1, "newTask"),
-    BUG(2, "bug"),
-    INPROCESS(3, "inProcess"),
-    REOPEN(4, "reopen"),
-    RESOLVED(5, "resolved"),
-    DONE(6, "done");
+    NEWTASK(1),
+    BUG(2),
+    INPROCESS(3),
+    REOPEN(4),
+    RESOLVED(5),
+    DONE(6);
 
     private int id;
-    private String value;
 
-    TaskStatus(int id, String value) {
+    TaskStatus(int id) {
 
         this.id = id;
-        this.value = value;
     }
 
     public int getId() {
         return id;
     }
-
-    public String getValue() {
-        return value;
-    }
-
 
     public static TaskStatus getById(int id){
         for(TaskStatus taskStatus : TaskStatus.values()){

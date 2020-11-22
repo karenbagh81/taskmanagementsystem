@@ -22,8 +22,9 @@ public class Task {
     @Temporal(TemporalType.TIMESTAMP)
     private Date taskUpdateDate;
 
-    private String taskStatus;
+    //private String taskStatus;
 
+    private TaskStatus taskStatus;
 
     @ManyToOne
     @JoinColumn(name = "user_fk")

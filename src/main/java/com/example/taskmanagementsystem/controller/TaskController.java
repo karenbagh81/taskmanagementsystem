@@ -1,5 +1,6 @@
 package com.example.taskmanagementsystem.controller;
 
+import com.example.taskmanagementsystem.enums.TaskStatus;
 import com.example.taskmanagementsystem.exception.NotFoundException;
 import com.example.taskmanagementsystem.model.Task;
 import com.example.taskmanagementsystem.model.User;
@@ -36,12 +37,13 @@ public class TaskController {
     public String createTaskForm(Task task, Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
+        model.addAttribute("task", task);
         return "tasks/task-create";
     }
 
     @PostMapping("/task-create")
     public String createTask(Task task) throws NotFoundException {
-        task.setUser(userService.findById(1)); // *******test!!!*******
+        //task.setUser(userService.findById(1)); // *******test!!!*******
         taskService.saveTask(task);
         return "redirect:/tasks";
     }

@@ -9,15 +9,17 @@
     <label for="taskName">Task Name</label>
     <input type="text" th:field="*{taskName}" id="taskName" placeholder="Task Name">
     <label for="taskStatus">Task Status</label>
-    <input type="text" th:field="*{taskStatus}" id="taskStatus" placeholder="Task Status">
+    <select id="taskStatus" name="taskStatus" th:field="*{taskStatus}">
+        <option th:each="taskStatus : ${T(com.example.taskmanagementsystem.enums.TaskStatus).values()}"
+                th:value="${taskStatus}" th:text="${taskStatus}">
+        </option>
+    </select>
     <label for="description">Description</label>
     <input type="text" th:field="*{description}" id="description" placeholder="Description">
     <label for="user">User</label>
-    <input list="users" th:field="*{user}" id="user" placeholder="Users">
-    <datalist id="users" >
-        <option th:each="user : ${users}">
-            <td th:text="${user.getEmail()}"></td>
-    </datalist>
+    <select  id="user" name="user" th:field="*{user}" placeholder="Users">
+        <option th:each="user : ${users}" th:value="${user.id}" th:utext="${user.getEmail()}"></option>
+    </select>
     <input type="submit" value="Create Task">
 
 </form>
